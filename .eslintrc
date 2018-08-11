@@ -1,13 +1,45 @@
 {
-    "parser": "babel-eslint",
     "env": {
         "browser": true,
+        "es6": true,
         "node": true
     },
+    "plugins": ["react"],
     "extends": "airbnb",
+    "parser": "babel-eslint",
     "rules": {
         "indent": [2, 4],
+        "no-use-before-define": [2, {
+            "functions": false
+        }],
+        "react/prefer-es6-class": 0,
         "react/jsx-indent": [2, 4],
-        "react/jsx-one-expression-per-line": false
+        "react/prop-types": [1],
+        "react/jsx-indent-props": [2, 4],
+        "react/jsx-one-expression-per-line": 0,
+        "jsx-a11y/label-has-for": [
+            2,
+            {
+                "components": ["Label"],
+                "required": {
+                    "some": ["nesting", "id"]
+                },
+                "allowChildren": false
+            }
+        ],
+        "jsx-a11y/anchor-is-valid": [
+            "error",
+            {
+                "components": ["Link"],
+                "specialLink": ["to"]
+            }
+        ]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "moduleDirectory": ["node_modules", "src/"]
+            }
+        }
     }
 }

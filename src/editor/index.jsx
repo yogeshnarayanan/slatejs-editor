@@ -28,29 +28,35 @@ export class Editor extends React.PureComponent {
             return [...plugins, plugin.plugin];
         }, []);
 
-        const renderMark = props.plugins.reduce((renderMark, plugin) => {
-            if (!plugin.renderMark) return renderMark;
-            return (props) => {
-                const result = renderMark(props);
-                if (result) return result;
-                return mergeMarkRenderers({
-                    defaultRenderer: plugin.renderMark,
-                    customRenderer: props.customRenderer,
-                })(props);
-            };
-        }, i => null);
+        const renderMark = props.plugins.reduce(
+            (renderMark, plugin) => {
+                if (!plugin.renderMark) return renderMark;
+                return (props) => {
+                    const result = renderMark(props);
+                    if (result) return result;
+                    return mergeMarkRenderers({
+                        defaultRenderer: plugin.renderMark,
+                        customRenderer: props.customRenderer,
+                    })(props);
+                };
+            },
+            i => null,
+        );
 
-        const renderNode = props.plugins.reduce((renderNode, plugin) => {
-            if (!plugin.renderNode) return renderNode;
-            return (props) => {
-                const result = renderNode(props);
-                if (result) return result;
-                return mergeNodeRenderers({
-                    defaultRenderer: plugin.renderNode,
-                    customRenderer: props.customRenderer,
-                })(props);
-            };
-        }, i => null);
+        const renderNode = props.plugins.reduce(
+            (renderNode, plugin) => {
+                if (!plugin.renderNode) return renderNode;
+                return (props) => {
+                    const result = renderNode(props);
+                    if (result) return result;
+                    return mergeNodeRenderers({
+                        defaultRenderer: plugin.renderNode,
+                        customRenderer: props.customRenderer,
+                    })(props);
+                };
+            },
+            i => null,
+        );
 
         return {
             plugins,
@@ -67,6 +73,7 @@ export class Editor extends React.PureComponent {
                 plugins={this.state.plugins}
                 renderMark={this.state.renderMark}
                 renderNode={this.state.renderNode}
+                ref={this.editor}
             />
         );
     }

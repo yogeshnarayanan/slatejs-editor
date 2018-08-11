@@ -4,11 +4,15 @@
   "private": true,
   "dependencies": {
     "immutable": "^3.8.2",
+    "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-portal": "^4.1.5",
     "react-scripts": "1.1.4",
     "slate": "^0.34.5",
-    "slate-react": "^0.13.2"
+    "slate-edit-table": "^0.17.0",
+    "slate-react": "^0.13.2",
+    "slate-schema-violations": "^0.1.28"
   },
   "scripts": {
     "start": "react-scripts start",

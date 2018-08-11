@@ -14,7 +14,6 @@ export function CreateHotkey(options) {
 
             // Toggle the mark `type`.
             change.toggleMark(type);
-            return true;
         },
     };
 }
