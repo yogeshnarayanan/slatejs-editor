@@ -58,34 +58,52 @@ export class TableToolbar extends Component {
         this.submitChange(change => alignPlugin.changes.setColumnAlign(change, align));
     };
 
-    renderTableToolbar() {
-        return (
-            <div className="toolbar">
-                <button onMouseDown={this.onInsertColumn}>Insert Column</button>
-                <button onMouseDown={this.onInsertRow}>Insert Row</button>
-                <button onMouseDown={this.onRemoveColumn}>Remove Column</button>
-                <button onMouseDown={this.onRemoveRow}>Remove Row</button>
-                <button onMouseDown={this.onRemoveTable}>Remove Table</button>
-                <br />
-                <button onMouseDown={e => this.onSetAlign(e, 'left')}>Set align left</button>
-                <button onMouseDown={e => this.onSetAlign(e, 'center')}>Set align center</button>
-                <button onMouseDown={e => this.onSetAlign(e, 'right')}>Set align right</button>
-            </div>
-        );
+    submitChange(...args) {
+        const { value, onChange } = this.props;
+        const change = value.change().call(...args);
+        onChange(change);
     }
 
     renderNormalToolbar() {
         return (
             <div className="toolbar">
-                <button onClick={this.onInsertTable}>Insert Table</button>
+                <button type="button" onClick={this.onInsertTable}>
+                    Insert Table
+                </button>
             </div>
         );
     }
 
-    submitChange(...args) {
-        const { value, onChange } = this.props;
-        const change = value.change().call(...args);
-        onChange(change);
+    renderTableToolbar() {
+        return (
+            <div className="toolbar">
+                <button type="button" onMouseDown={this.onInsertColumn}>
+                    Insert Column
+                </button>
+                <button type="button" onMouseDown={this.onInsertRow}>
+                    Insert Row
+                </button>
+                <button type="button" onMouseDown={this.onRemoveColumn}>
+                    Remove Column
+                </button>
+                <button type="button" onMouseDown={this.onRemoveRow}>
+                    Remove Row
+                </button>
+                <button type="button" onMouseDown={this.onRemoveTable}>
+                    Remove Table
+                </button>
+                <br />
+                <button type="button" onMouseDown={e => this.onSetAlign(e, 'left')}>
+                    Set align left
+                </button>
+                <button type="button" onMouseDown={e => this.onSetAlign(e, 'center')}>
+                    Set align center
+                </button>
+                <button type="button" onMouseDown={e => this.onSetAlign(e, 'right')}>
+                    Set align right
+                </button>
+            </div>
+        );
     }
 
     render() {

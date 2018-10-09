@@ -10,7 +10,8 @@ export class Editor extends React.PureComponent {
     }
 
     componentWillReceiveProps = (nextProps) => {
-        if (this.props.plugins !== nextProps.plugins) {
+        const { plugins } = this.props;
+        if (plugins !== nextProps.plugins) {
             this.setState({
                 ...this.mapToSlateProps(nextProps),
             });
@@ -18,41 +19,41 @@ export class Editor extends React.PureComponent {
     };
 
     mapToSlateProps = (props) => {
-        const plugins = props.plugins.reduce((plugins, plugin) => {
-            if (!plugin.plugin) {
-                return plugins;
+        const plugins = props.plugins.reduce((plgns, plgn) => {
+            if (!plgn.plugin) {
+                return plgns;
             }
-            if (Array.isArray(plugin.plugin)) {
-                return [...plugins, ...plugin.plugin];
+            if (Array.isArray(plgn.plugin)) {
+                return [...plgns, ...plgn.plugin];
             }
-            return [...plugins, plugin.plugin];
+            return [...plgns, plgn.plugin];
         }, []);
 
         const renderMark = props.plugins.reduce(
-            (renderMark, plugin) => {
-                if (!plugin.renderMark) return renderMark;
-                return (props) => {
-                    const result = renderMark(props);
+            (rndrMark, plugin) => {
+                if (!plugin.renderMark) return rndrMark;
+                return (prps) => {
+                    const result = rndrMark(prps);
                     if (result) return result;
                     return mergeMarkRenderers({
                         defaultRenderer: plugin.renderMark,
                         customRenderer: props.customRenderer,
-                    })(props);
+                    })(prps);
                 };
             },
             i => null,
         );
 
         const renderNode = props.plugins.reduce(
-            (renderNode, plugin) => {
-                if (!plugin.renderNode) return renderNode;
-                return (props) => {
-                    const result = renderNode(props);
+            (rndrNode, plugin) => {
+                if (!plugin.renderNode) return rndrNode;
+                return (prps) => {
+                    const result = rndrNode(prps);
                     if (result) return result;
                     return mergeNodeRenderers({
                         defaultRenderer: plugin.renderNode,
                         customRenderer: props.customRenderer,
-                    })(props);
+                    })(prps);
                 };
             },
             i => null,
@@ -66,13 +67,16 @@ export class Editor extends React.PureComponent {
     };
 
     render() {
+        const { value, onChange } = this.props;
+        const { plugins, renderMark, renderNode } = this.state;
+
         return (
             <SlateEditor
-                value={this.props.value}
-                onChange={this.props.onChange}
-                plugins={this.state.plugins}
-                renderMark={this.state.renderMark}
-                renderNode={this.state.renderNode}
+                value={value}
+                onChange={onChange}
+                plugins={plugins}
+                renderMark={renderMark}
+                renderNode={renderNode}
                 ref={this.editor}
             />
         );
