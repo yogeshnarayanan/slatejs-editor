@@ -9,8 +9,17 @@ import { plugin as markShortcutsPlugin } from './plugins/mark-shortcuts';
 import { Toolbar, plugin as toolbarPlugin } from './plugins/toolbar';
 import HistoryButtons from './plugins/history';
 import tablePlugin, { TableToolbar } from './plugins/table';
+import listPlugin, { ListToolBar } from './plugins/list';
+import alignmentPlugin, { AlignmentToolBar } from './plugins/alignment';
 
-const plugins = [markShortcutsPlugin(), toolbarPlugin(), annotatePlugin(), ...tablePlugin];
+const plugins = [
+    markShortcutsPlugin(),
+    toolbarPlugin(),
+    annotatePlugin(),
+    listPlugin(),
+    alignmentPlugin(),
+    ...tablePlugin,
+];
 
 const existingValue = JSON.parse(localStorage.getItem('content'));
 const initialValue = Value.fromJSON(
@@ -70,6 +79,8 @@ class App extends React.Component {
                             <HistoryButtons value={value} onChange={this.onChange} />
                             <TableToolbar value={value} onChange={this.onChange} />
                             <AnnotateToolbar value={value} onChange={this.onChange} />
+                            <ListToolBar value={value} onChange={this.onChange} />
+                            <AlignmentToolBar value={value} onChange={this.onChange} />
                         </React.Fragment>
                     )}
                 />
