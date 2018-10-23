@@ -1,3 +1,28 @@
+body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f2f5f8;
+      line-height: 1;
+      font-size: 13px;
+      line-height: 20px;
+}
+
+.app {
+      max-width: 80%;
+      margin: 0 auto;
+}
+.editor div[contenteditable='true'] {
+      max-width: 80%;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border: 1px solid #d3d3d3;
+      box-shadow: none;
+      padding: 60px;
+      font-size: 16px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      height: auto;
+      min-height: 843px;
+}
+
 .editor table {
       width: 100%;
       border-collapse: collapse;

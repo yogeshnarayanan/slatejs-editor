@@ -68,23 +68,27 @@ class App extends React.Component {
     render() {
         const { value } = this.state;
         return (
-            <div className="App editor">
-                <p className="App-intro">SlateJS Editor</p>
-                <Toolbar
-                    onChange={this.onChange}
-                    value={value}
-                    render={({ DefaultButtons }) => (
-                        <React.Fragment>
-                            <DefaultButtons />
-                            <HistoryButtons value={value} onChange={this.onChange} />
-                            <TableToolbar value={value} onChange={this.onChange} />
-                            <AnnotateToolbar value={value} onChange={this.onChange} />
-                            <ListToolBar value={value} onChange={this.onChange} />
-                            <AlignmentToolBar value={value} onChange={this.onChange} />
-                        </React.Fragment>
-                    )}
-                />
-                <Editor value={value} onChange={this.onChange} plugins={plugins} />
+            <div className="app">
+                <p className="app-headline">SlateJS Editor</p>
+                <div className="toolbar">
+                    <Toolbar
+                        onChange={this.onChange}
+                        value={value}
+                        render={({ DefaultButtons }) => (
+                            <React.Fragment>
+                                <DefaultButtons />
+                                <HistoryButtons value={value} onChange={this.onChange} />
+                                <TableToolbar value={value} onChange={this.onChange} />
+                                <AnnotateToolbar value={value} onChange={this.onChange} />
+                                <ListToolBar value={value} onChange={this.onChange} />
+                                <AlignmentToolBar value={value} onChange={this.onChange} />
+                            </React.Fragment>
+                        )}
+                    />
+                </div>
+                <div className="editor">
+                    <Editor value={value} onChange={this.onChange} plugins={plugins} />
+                </div>
             </div>
         );
     }
