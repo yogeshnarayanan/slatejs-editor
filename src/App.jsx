@@ -69,8 +69,8 @@ class App extends React.Component {
         const { value } = this.state;
         return (
             <div className="app">
-                <p className="app-headline">SlateJS Editor</p>
-                <div className="toolbar">
+                <div className="pos-fixed">
+                    <p className="app-headline">SlateJS Editor</p>
                     <Toolbar
                         onChange={this.onChange}
                         value={value}
@@ -86,8 +86,10 @@ class App extends React.Component {
                         )}
                     />
                 </div>
-                <div className="editor">
-                    <Editor value={value} onChange={this.onChange} plugins={plugins} />
+                <div className="container">
+                    <div className="editor">
+                        <Editor value={value} onChange={this.onChange} plugins={plugins} />
+                    </div>
                 </div>
             </div>
         );
