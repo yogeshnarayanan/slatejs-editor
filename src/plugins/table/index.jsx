@@ -92,7 +92,6 @@ export class TableToolbar extends Component {
                 <button type="button" onMouseDown={this.onRemoveTable}>
                     Remove Table
                 </button>
-                <br />
                 <button type="button" onMouseDown={e => this.onSetAlign(e, 'left')}>
                     Set align left
                 </button>

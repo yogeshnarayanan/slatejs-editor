@@ -1,26 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700');
 body {
       font-family: 'Poppins', sans-serif;
       background-color: #f2f5f8;
       line-height: 1;
       font-size: 13px;
       line-height: 20px;
+      overflow-x: hidden;
 }
-
-.app {
-      max-width: 80%;
+.container {
+      position: relative;
+      max-width: 1300px;
+      width: 100%;
       margin: 0 auto;
+      padding: 0px 20px;
 }
-.editor div[contenteditable='true'] {
-      max-width: 80%;
-      margin: 0 auto;
+.app-headline {
+      margin: 0;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      background: #dcdcdc;
+}
+.toolbar {
+      padding: 20px 0px;
+      text-align: center;
+}
+.toolbar .toolbar {
+      padding: 0;
+      display: inline-block;
+}
+.toolbar button {
+      border: 1px solid #cecece;
+      padding: 5px;
+      min-width: 30px;
+      min-height: 30px;
+      border-radius: 2px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      background: white;
+      text-transform: capitalize;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      color: #333;
+      margin: 2px;
+}
+.toolbar button:hover {
+      border-color: #4190f2;
+}
+.editor {
+      max-width: 800px;
+      margin: 180px auto 20px;
       background-color: #ffffff;
       border: 1px solid #d3d3d3;
-      box-shadow: none;
-      padding: 60px;
+      padding: 80px;
       font-size: 16px;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      height: auto;
-      min-height: 843px;
+      min-height: 800px;
+      font-size: 16px;
+      color: #000;
+}
+.editor p {
+      margin: 0;
 }
 
 .editor table {
@@ -28,7 +71,6 @@ body {
       border-collapse: collapse;
       border-top: 1px solid black;
 }
-
 .editor table tr {
       border: none;
       border-bottom: 1px solid black;
@@ -37,12 +79,17 @@ body {
       flex-direction: row;
       flex-wrap: nowrap;
 }
-
+.editor table tr p {
+      padding: 2px;
+}
+.editor table td p {
+      padding: 2px;
+      font-weight: 500;
+}
 .editor table tr:first-child {
       background: #f5f5f5;
       font-weight: bold;
 }
-
 .editor table td {
       border: 1px solid black;
       border-top: none;
@@ -52,6 +99,14 @@ body {
       word-break: break-all;
 }
 
+.pos-fixed {
+      position: fixed;
+      top: 0;
+      z-index: 9;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 0 3px #ccc;
+}
 .modal {
       position: fixed;
       z-index: 1;
@@ -63,7 +118,6 @@ body {
       background-color: rgb(0, 0, 0);
       background-color: rgba(0, 0, 0, 0.4);
 }
-
 /* Modal Content/Box */
 .modal-content {
       background-color: #fefefe;
@@ -72,7 +126,6 @@ body {
       border: 1px solid #888;
       width: 80%;
 }
-
 /* The Close Button */
 .close {
       color: #aaa;
